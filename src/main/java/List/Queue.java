@@ -33,4 +33,35 @@ public class Queue {
         }
         return result;
     }
+
+    void removeAll(Queue[] list){
+       for (Queue q : list){
+           Node temp = q.first;
+           while (temp != null){
+               int value = temp.getData();
+
+               Node prev = null;
+               Node current = first;
+
+               while (current != null) {
+                   if (current.getData() == value) {
+                       if (prev != null) {
+                           prev.next = current.next;
+                       } else {
+                           first = current.next;
+                       }
+
+                       if (current == last) {
+                           last = prev;
+                       }
+                   } else {
+                       prev = current;
+                   }
+                   current = current.next;
+               }
+               temp = temp.getNext();
+           }
+       }
+    }
 }
+

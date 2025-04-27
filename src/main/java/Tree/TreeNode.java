@@ -189,7 +189,7 @@ public class TreeNode {
        if (left.data != right.data){
            return false;
        }
-
-
+       
+       return isMirror(left.left, right.right) && isMirror(left.right, right.left);
     }
 }

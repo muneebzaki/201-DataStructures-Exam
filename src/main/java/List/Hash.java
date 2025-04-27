@@ -29,4 +29,6 @@ public class Hash {
     private int hashFunction(int value){
         return value % N;
     }
+
+
 }

@@ -41,4 +41,35 @@ public class Hash {
         table[address] = new Element(value);
     }
 
+    int[] union(int[] list1, int[] list2) {
+        int tableSize = list1.length + list2.length;
+        List.Hash seen = new List.Hash(tableSize);
+
+        int count = 0;
+
+        for (int num : list1) {
+            seen.insert(num);
+            count++;
+        }
+        for (int num : list2) {
+            if (seen.search(num) == null) {
+                count++;
+            }
+        }
+
+        int[] result = new int[count];
+        int index = 0;
+
+        for (int num : list1) {
+            result[index++] = num;
+        }
+        for (int num : list2) {
+            if (seen.search(num) == null) {
+                result[index++] = num;
+            }
+        }
+
+        return result;
+    }
+
 }
